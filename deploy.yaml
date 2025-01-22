@@ -1,0 +1,43 @@
+import:
+  - recipe/laravel.php
+
+config:
+  repository: "git@github.com:ikeogu/aqua-tracker.git"
+  bin/php: "/usr/bin/php"
+  keep_releases: 5
+
+hosts:
+
+  develop:
+    hostname: "ec2-16-171-171-236.eu-north-1.compute.amazonaws.com"
+    remote_user: "ubuntu"
+    http_user: "nginx"
+    deploy_path: "/var/www/aqua-tracker"
+    branch: "develop"
+    ssh_multiplexing: true
+
+tasks:
+  redeploy:
+    - deploy:unlock
+    - deploy
+  deploy:
+    - deploy:prepare
+    - deploy:vendors
+    - artisan:storage:link
+    - artisan:optimize:clear
+    - artisan:migrate
+    - artisan:optimize
+    - deploy:publish
+  rebuild_permissions:
+    - cd: "{{current_path}}"
+    - run: "clpctl system:permissions:reset --directories=775 --files=660 --path=."
+  fresh_migrations:
+    - cd: "{{current_path}}"
+    - run: "php artisan migrate:fresh"
+  reseed_db:
+    - cd: "{{current_path}}"
+    - run: "php artisan db:seed"
+
+after:
+  deploy: rebuild_permissions
+  deploy:failed: deploy:unlock
