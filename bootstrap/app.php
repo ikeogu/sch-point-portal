@@ -48,6 +48,7 @@ return Application::configure(basePath: dirname(__DIR__))
 
         $middleware->validateCsrfTokens(except: [
             'webhook/*',
+        'https://portal.school-point.com/*',
         ]);
 
     $middleware->api(prepend: [
