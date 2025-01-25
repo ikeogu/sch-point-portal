@@ -120,13 +120,11 @@ class AuthController extends Controller
             ]);
         }
 
+        $user_resource = new UserResource($user);
         $tokenResult = $user->createToken('Personal Access Token');
         $token = $tokenResult->plainTextToken;
 
-        return response()->json([
-            'user' => new UserResource($user),
-            'tk' => $token,
-        ]);
+        return response()->json(['data' => $user_resource, 'tk' => $token], 200)->header('Authorization', $token);
     }
 
 

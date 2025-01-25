@@ -168,22 +168,22 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
     });
 
     //////////////////////DASHBOARD//////////////////////////
-   /*  Route::group(['prefix' => 'dashboard'], function () {
+    Route::group(['prefix' => 'dashboard'], function () {
         Route::get('super', [DashboardsController::class, 'superAdminDashboard']);
         Route::get('admin', [DashboardsController::class, 'adminDashboard']);
         Route::get('student', [DashboardsController::class, 'studentDashboard']);
         Route::get('teacher', [DashboardsController::class, 'teacherDashboard']);
-    }); */
+    });
     ///////////////////EVENTS/////////////////////////////////
-   /*  Route::group(['prefix' => 'events'], function () {
+    Route::group(['prefix' => 'events'], function () {
 
         Route::get('/', [EventsController::class, 'index']);
         Route::post('add-event', [EventsController::class, 'addEvent']);
         Route::delete('delete/{event}', [EventsController::class, 'deleteEvent']);
         Route::put('update/{event}', [EventsController::class, 'updateEvent']);
         Route::get('/upcoming-events', [EventsController::class, 'upcomingEvents']);
-    }); */
-/*
+    });
+
     Route::group(['prefix' => 'messages'], function () {
 
         Route::get('/', [MessagesController::class, 'index']);
@@ -192,9 +192,9 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::delete('delete/{message}', [MessagesController::class, 'delete']);
         Route::put('update/{message}', [MessagesController::class, 'update']);
         Route::get('/details/{message}', [MessagesController::class, 'messageDetails']);
-    }); */
+    });
 
-   /*  Route::group(['prefix' => 'curriculum'], function () {
+    Route::group(['prefix' => 'curriculum'], function () {
         Route::post('level-group/save', [CurriculumCategoryController::class, 'storeCurriculumLevelGroup']);
         Route::post('level/save', [CurriculumCategoryController::class, 'storeCurriculumLevel']);
         Route::put('level/update/{curriculum_level}', [CurriculumCategoryController::class, 'updateCurriculumLevel']);
@@ -202,8 +202,8 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::get('level-group/all', [CurriculumCategoryController::class, 'allCurriculumLevelGroups']);
         Route::get('level/all', [CurriculumCategoryController::class, 'allCurriculumLevels']);
         Route::put('level-group/update/{curriculum_level_group}', [CurriculumCategoryController::class, 'updateCurriculumLevelGroup']);
-    }); */
-   /*  Route::group(['prefix' => 'attendance'], function () {
+    });
+     Route::group(['prefix' => 'attendance'], function () {
         Route::get('classes', [AttendanceController::class, 'classes']);
         Route::get('create/class', [AttendanceController::class, 'createClassAttendance']);
         Route::post('store/class', [AttendanceController::class, 'storeClassAttendance']);
@@ -213,7 +213,7 @@ Route::group(['middleware' => 'auth:sanctum'], function () {
         Route::post('store/subject', [AttendanceController::class, 'storeSubjectAttendance']);
         //Route::get('fetch-level', 'AttendanceController@fetchLevelAttendanceChart');
 
-    }); */
+    }); 
     Route::group(['prefix' => 'assignment'], function () {
         Route::get('/view-assignment', [AssignmentsController::class, 'index']);
         Route::get('/all-assignments', [AssignmentsController::class, 'allAssignments']);
