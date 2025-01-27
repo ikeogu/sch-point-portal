@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Core\Http\Controllers;
+namespace app\Http\Controllers\Setup;
 
 use App\Models\ClassActivity;
 use App\Models\Guardian;

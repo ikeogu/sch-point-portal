@@ -791,6 +791,7 @@ class ResultsController extends Controller
     public function classBroadSheet(Request $request, Result $result)
     {
         set_time_limit(0);
+        ini_set('memory_limit', '-1');
         $user = $this->getUser();
         $class_teacher_id = $request->class_teacher_id;
         //$term_spec = $request->term_spec;

@@ -17,7 +17,7 @@ class LogSanctumToken
     public function handle(Request $request, Closure $next): Response
     {
         $token = $request->bearerToken();
-        Log::info('Sanctum Token: ' . $token);
+       // Log::info('Sanctum Token: ' . $token);
         return $next($request);
     }
 }
