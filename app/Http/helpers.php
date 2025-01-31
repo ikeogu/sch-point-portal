@@ -1051,12 +1051,14 @@ function mainDomainPublicPath($folder = null)
 }
 function subdomainPublicPath($folder = null)
 {
-    return "/home/schoolpoint/public_html/storage/" . $folder;
+    // return "/home/schoolpoint/public_html/storage/" . $folder;
+    return "/var/www/html/sch-point-portal/sch-point-portal/storage/public/" . $folder;
 }
 
 function portalPulicPath($folder = null)
 {
-    return "/home/schoolpoint/public_html/api/storage/" . $folder;
+    // return "/home/schoolpoint/public_html/api/storage/" . $folder;
+    return "/var/www/html/sch-point-portal/sch-point-portal/storage/public/" . $folder;
 }
 
 function folderSize($dir)
