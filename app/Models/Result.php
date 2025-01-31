@@ -339,7 +339,7 @@ class Result extends Model
         return array($view_half, $view_full, $status_half, $status_full);
     }
 
-    public function subjectStudentPerformance(array $result_details, array $grades = [], mixed $result_settings = null, $options = [])
+    public function subjectStudentPerformance(mixed $result_details, mixed $grades = [], mixed $result_settings = null, $options = [])
     {
         $subject_class_average = 0;
         $male_average = 0;
@@ -669,9 +669,8 @@ class Result extends Model
     public function analyzeTeacherTermlySubjectPerformance($teacher_id, $school_id, $sess_id, $term_id)
     {
 
-        /* $results = Result::groupBy('subject_teacher_id')->with('subjectTeacher.subject', 'classTeacher.c_class')->where(['recorded_by' => $teacher_id, 'sess_id' => $sess_id, 'school_id' => $school_id, 'term_id' => $term_id, 'result_status' => 'Applicable'])->where('exam', '!=', null)->orderBy('sess_id')->select('*', DB::raw('AVG(total) as average'))->get();
-        */
-        $results = Result::select(
+       // $results = Result::groupBy('subject_teacher_id')->with('subjectTeacher.subject', 'classTeacher.c_class')->where(['recorded_by' => $teacher_id, 'sess_id' => $sess_id, 'school_id' => $school_id, 'term_id' => $term_id, 'result_status' => 'Applicable'])->where('exam', '!=', null)->orderBy('sess_id')->select('*', DB::raw('AVG(total) as average'))->get();
+	$results = Result::select(
             'subject_teacher_id',
             DB::raw('AVG(total) as average') // Aggregate function for the average total
         )
@@ -684,7 +683,7 @@ class Result extends Model
             'result_status' => 'Applicable',
         ])
         ->whereNotNull('exam') // Check for non-null exam column
-        ->groupBy('subject_teacher_id') // Group by the necessary column
+        ->groupBy('subject_teacher_id', 'sess_id') // Group by the necessary column
         ->orderBy('sess_id') // Ordering
         ->get();
         return $results;
