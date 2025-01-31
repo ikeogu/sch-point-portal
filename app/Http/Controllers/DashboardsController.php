@@ -544,6 +544,7 @@ class DashboardsController extends Controller
         $teacher = new Teacher();
         $school_id = $this->getSchool()->id;
         $details = $teacher->teacherSubjects($id, $school_id);
+        
         foreach ($details as $detail) {
             if ($detail->subject) {
                 //            $class_teacher_id = SubjectTeacher::where( 'teacher_id', '=', $id )->where( 'subject_id', '=', $subject->id )->pluck( 'class_teacher_id' )->first();

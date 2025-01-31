@@ -73,7 +73,7 @@ class GradesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Grade  $grade
+     * @param  \App\Models\Grade  $grade
      * @return \Illuminate\Http\Response
      */
     public function show(Grade $grade)
@@ -86,7 +86,7 @@ class GradesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Grade  $grade
+     * @param  \App\Models\Grade  $grade
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
@@ -103,7 +103,7 @@ class GradesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Grade  $grade
+     * @param  \App\Models\Grade  $grade
      * @return \Illuminate\Http\Response
      */
 
@@ -130,7 +130,7 @@ class GradesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Grade  $grade
+     * @param  \App\Models\Grade  $grade
      * @return \Illuminate\Http\Response
      */
     public function destroy(Grade $grade)

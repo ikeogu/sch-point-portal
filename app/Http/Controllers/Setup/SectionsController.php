@@ -49,7 +49,7 @@ class SectionsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Section  $section
+     * @param  \App\Models\Section  $section
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)

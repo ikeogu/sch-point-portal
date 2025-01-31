@@ -107,7 +107,7 @@ class TermsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Term  $term
+     * @param  \App\Models\Term  $term
      * @return \Illuminate\Http\Response
      */
     public function show(Term $term)
@@ -118,7 +118,7 @@ class TermsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Term  $term
+     * @param  \App\Models\Term  $term
      * @return \Illuminate\Http\Response
      */
     public function edit(Term $term)
@@ -130,7 +130,7 @@ class TermsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Term  $term
+     * @param  \App\Models\Term  $term
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Term $term)
@@ -141,7 +141,7 @@ class TermsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Term  $term
+     * @param  \App\Models\Term  $term
      * @return \Illuminate\Http\Response
      */
     public function destroy(Term $term)

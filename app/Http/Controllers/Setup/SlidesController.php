@@ -65,7 +65,7 @@ class SlidesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Slide  $Slide
+     * @param  \App\Models\Side  $Slide
      * @return \Illuminate\Http\Response
      */
     public function edit(Slide $slide)
@@ -79,7 +79,7 @@ class SlidesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Slide  $Slide
+     * @param  \App\Models\Side  $Slide
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Slide $slide)
@@ -97,7 +97,7 @@ class SlidesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Slide  $Slide
+     * @param  \App\Models\Side  $Slide
      * @return \Illuminate\Http\Response
      */
     public function destroy(Slide $slide)

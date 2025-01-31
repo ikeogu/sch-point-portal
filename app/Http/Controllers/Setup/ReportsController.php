@@ -1,6 +1,6 @@
 <?php
 
-namespace Modules\Core\Http\Controllers;
+namespace app\Http\Controllers\Setup;
 
 use App\Models\ClassAttendance;
 use App\Models\ClassTeacher;
@@ -18,6 +18,7 @@ use App\Models\IncomeAndExpense;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Http\Controllers\Controller;
+
 
 class ReportsController extends Controller
 {
@@ -555,9 +556,7 @@ class ReportsController extends Controller
             $ward_ids = $guardian->ward_ids;
 
             $ward_id_array = explode('~', substr($ward_ids, 1));
-
-
-
+            $student_in_class_obj = new StudentsInClass();
             $student_average = [];
             foreach ($ward_id_array as $key => $student_id) :
                 if ($student_id != "") {

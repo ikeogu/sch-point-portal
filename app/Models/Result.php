@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\DB;
 
 class Result extends Model
 {
@@ -234,7 +235,7 @@ class Result extends Model
         return $remark;
     }
 
-    public function resultGrade($total, $grades)
+    public function resultGrade($total, $grades = [])
     {
         $grade = 'F';
         $color = '#F00000';
@@ -338,7 +339,7 @@ class Result extends Model
         return array($view_half, $view_full, $status_half, $status_full);
     }
 
-    public function subjectStudentPerformance($result_details, $grades, $result_settings, $options)
+    public function subjectStudentPerformance(array $result_details, array $grades = [], mixed $result_settings = null, $options = [])
     {
         $subject_class_average = 0;
         $male_average = 0;
@@ -478,7 +479,7 @@ class Result extends Model
                 'term_id' => $term_id,
                 'result_status' => 'Applicable'
             ]
-        )->whereRaw('total IS NOT NULL')->select('student_id', \DB::raw('AVG(total) as average'))->get();
+        )->whereRaw('total IS NOT NULL')->select('student_id', DB::raw('AVG(total) as average'))->get();
         return $student_result_average;
     }
 
@@ -668,8 +669,24 @@ class Result extends Model
     public function analyzeTeacherTermlySubjectPerformance($teacher_id, $school_id, $sess_id, $term_id)
     {
 
-        $results = Result::groupBy('subject_teacher_id')->with('subjectTeacher.subject', 'classTeacher.c_class')->where(['recorded_by' => $teacher_id, 'sess_id' => $sess_id, 'school_id' => $school_id, 'term_id' => $term_id, 'result_status' => 'Applicable'])->where('exam', '!=', null)->orderBy('sess_id')->select('*', \DB::raw('AVG(total) as average'))->get();
-
+        /* $results = Result::groupBy('subject_teacher_id')->with('subjectTeacher.subject', 'classTeacher.c_class')->where(['recorded_by' => $teacher_id, 'sess_id' => $sess_id, 'school_id' => $school_id, 'term_id' => $term_id, 'result_status' => 'Applicable'])->where('exam', '!=', null)->orderBy('sess_id')->select('*', DB::raw('AVG(total) as average'))->get();
+        */
+        $results = Result::select(
+            'subject_teacher_id',
+            DB::raw('AVG(total) as average') // Aggregate function for the average total
+        )
+        ->with(['subjectTeacher.subject', 'classTeacher.c_class']) // Eager loading relationships
+        ->where([
+            'recorded_by' => $teacher_id,
+            'sess_id' => $sess_id,
+            'school_id' => $school_id,
+            'term_id' => $term_id,
+            'result_status' => 'Applicable',
+        ])
+        ->whereNotNull('exam') // Check for non-null exam column
+        ->groupBy('subject_teacher_id') // Group by the necessary column
+        ->orderBy('sess_id') // Ordering
+        ->get();
         return $results;
     }
     public function studentCummulativePerformance($student_id)
@@ -682,7 +699,7 @@ class Result extends Model
                 ->where('student_id', $student_id)
                 ->where('exam', '!=', NULL)
                 ->where('term_id', $term)
-                ->select(\DB::raw('AVG(total) as average'))->first();
+                ->select(DB::raw('AVG(total) as average'))->first();
             if ($result_average) {
                 $result_details[] = ['average' => $result_average->average];
             } else {

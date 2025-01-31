@@ -5,7 +5,7 @@ namespace App\Listeners;
 use App\Events\SubjectEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\SubjectActivity;
+use App\Models\SubjectActivity;
 class SubjectEventListener
 {
     /**

@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers\Result;
 
-use App\CClass;
+use App\Models\CClass;
 use App\Http\Requests\RemarkRequest;
-use App\Remark;
+use App\Models\Remark;
 use Illuminate\Database\Eloquent\ModelNotFoundException;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Request;
 
 class RemarksController extends Controller
 {
@@ -37,7 +39,7 @@ class RemarksController extends Controller
         return response()->json($html);
     }
 
-    public function store(RemarkRequest $request, Remark $remark)
+    public function store(Request $request, Remark $remark)
     {
         $inputs = $request->all();
         $inputs['school_id'] = $this->getSchool()->id;
@@ -65,7 +67,7 @@ class RemarksController extends Controller
         }
     }
 
-    public function update(RemarkRequest $request, $id)
+    public function update(Request $request, $id)
     {
         try {
             $remark = Remark::findOrFail($id);

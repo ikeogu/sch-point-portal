@@ -128,7 +128,7 @@ class TimelinesController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Timeline  $timeline
+     * @param  \App\Models\Timeline  $timeline
      * @return \Illuminate\Http\Response
      */
     public function edit(Timeline $timeline)
@@ -140,7 +140,7 @@ class TimelinesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Timeline  $timeline
+     * @param  \App\Models\Timeline  $timeline
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Timeline $timeline)
@@ -151,7 +151,7 @@ class TimelinesController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Timeline  $timeline
+     * @param  \App\Models\Timeline  $timeline
      * @return \Illuminate\Http\Response
      */
     public function destroy(Timeline $timeline)

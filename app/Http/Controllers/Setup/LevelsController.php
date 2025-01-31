@@ -129,7 +129,7 @@ class LevelsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Level  $level
+     * @param  \App\Models\Level  $level
      * @return \Illuminate\Http\Response
      */
     public function show(Level $level)
@@ -140,7 +140,7 @@ class LevelsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Level  $level
+     * @param  \App\Models\Level  $level
      * @return \Illuminate\Http\Response
      */
     public function edit(Level $level)
@@ -154,7 +154,7 @@ class LevelsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Level  $level
+     * @param  \App\Models\Level  $level
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Level $level)
@@ -174,7 +174,7 @@ class LevelsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Level  $level
+     * @param  \App\Models\Level  $level
      * @return \Illuminate\Http\Response
      */
     public function destroy(Level $level)

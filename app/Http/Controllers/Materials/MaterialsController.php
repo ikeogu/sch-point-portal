@@ -125,7 +125,7 @@ class MaterialsController extends Controller
             $material->delete();
             return response()->json([], 204);
         } catch (ModelNotFoundException $ex) {
-            return redirect()->route('materials.index');
+            return redirect()->back();
         }
     }
 

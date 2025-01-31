@@ -82,7 +82,7 @@ class RolesController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Role  $role
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
     public function show(Role $role)
@@ -94,7 +94,7 @@ class RolesController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Role  $role
+     * @param  \App\Models\Role  $role
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Role $role)

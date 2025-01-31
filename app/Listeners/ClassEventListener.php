@@ -5,7 +5,7 @@ namespace App\Listeners;
 use App\Events\ClassEvent;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use App\ClassActivity;
+use App\Models\ClassActivity;
 class ClassEventListener
 {
     /**
